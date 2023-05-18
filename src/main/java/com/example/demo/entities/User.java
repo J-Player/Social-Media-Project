@@ -1,7 +1,10 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.Data;
+
+import java.util.Date;
 
 @Data
 @Entity
@@ -11,8 +14,18 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String email;
+
+    @Column(unique = true, nullable = false)
+    private String username;
+
     private String password;
+
+    @Email
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    private String name;
+
+    private Date birthDate;
 
 }
