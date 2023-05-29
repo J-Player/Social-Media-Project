@@ -1,10 +1,19 @@
 package com.example.demo.entities.dtos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDTO {
 
     @NotEmpty(message = "O campo 'username' é obrigatório.")
@@ -19,6 +28,7 @@ public class UserDTO {
     @NotEmpty(message = "O campo 'name' é obrigatório.")
     private String name;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @NotEmpty(message = "O campo 'birthDate' é obrigatório.")
     private Date birthDate;
