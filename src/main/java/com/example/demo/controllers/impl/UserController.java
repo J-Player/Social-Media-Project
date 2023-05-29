@@ -36,15 +36,16 @@ public class UserController implements IController<User, UserDTO> {
 
     @Override
     @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@RequestBody UserDTO userDTO, Long id) {
+    public ResponseEntity<Void> update(@RequestBody UserDTO userDTO, @PathVariable Long id) {
         service.update(userDTO, id);
         return ResponseEntity.noContent().build();
     }
 
     @Override
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
 }
